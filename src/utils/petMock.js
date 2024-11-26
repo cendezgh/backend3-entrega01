@@ -1,16 +1,10 @@
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
 
 export const generatePets = () => {
-  const genders = ['male', 'female'];
-  const gender = faker.helpers.arrayElement(genders);
-  const animal = faker.animal.type();
+  const petType = faker.helpers.arrayElement(["Cat", "Dog"]); 
 
   return {
-    name: faker.animal.catName(),
-    species: animal,
-    gender: gender,
-    age: faker.number.int({ min: 0, max: 15 }),
-    breed: faker.animal.dogBreed(), 
-    adopted: faker.datatype.boolean(), 
+    name: faker.animal.petName(),
+    type: petType,
   };
 };

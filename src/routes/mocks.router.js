@@ -29,29 +29,10 @@ router.get('/mockingusers', (req, res) => {
 
 router.get('/mockingpets', (req, res) => {
   try {
-    const pets = Array.from({ length: 100 }, () => ({
-      name: faker.animal.type(),
-      adopted: faker.datatype.boolean(),
-    }));
+    const pets = Array.from({ length: 100 }, () => generatePets()); // <--  Usar generatePets aquí
     res.json({ status: "success", payload: pets });
   } catch (error) {
     console.error("Error en /mockingpets:", error.message);
-    res.status(500).json({ status: "error", message: error.message });
-  }
-});
-
-router.put('/mockingpets/:id/adopt', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const updatedPet = await petService.adoptPet(id);
-
-    if (!updatedPet) {
-      return res.status(404).json({ status: "error", message: "Mascota no encontrada" });
-    }
-
-    res.json({ status: "success", payload: updatedPet });
-  } catch (error) {
-    console.error("Error en /mockingpets/:id/adopt:", error.message);
     res.status(500).json({ status: "error", message: error.message });
   }
 });

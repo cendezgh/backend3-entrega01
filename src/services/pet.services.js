@@ -7,15 +7,4 @@ export default class PetService extends Services {
   constructor() {
     super(petDao);
   }
-
-  // Método adicional: Adoptar una mascota
-  async adoptPet(id) {
-    const pet = await this.dao.getById(id);
-
-    if (!pet) {
-      return null;
-    }
-
-    return await this.dao.update(id, { adopted: true });
-  }
 }
