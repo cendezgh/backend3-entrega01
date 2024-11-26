@@ -3,6 +3,7 @@ import productRouter from './product.router.js';
 import userRouter from './user.router.js';
 import cartRouter from './cart.router.js';
 import sessionsRouter from './sessions.router.js';
+import mocksRouter from './mocks.router.js';
 
 export default class MainRouter {
     constructor() {
@@ -15,6 +16,7 @@ export default class MainRouter {
         this.router.use('/users', userRouter);
         this.router.use('/carts', cartRouter);
         this.router.use('/sessions', sessionsRouter);
+        this.router.use('/mocks', mocksRouter);
     }
 
     getRouter() {

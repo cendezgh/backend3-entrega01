@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { passportCall } from "../passport/passportCall.js";
-import { createResponse } from "../utils.js";
+import { createResponse } from "../utils/utils.js";
 import UserDTO from "../dto/user.dto.js";
 
 const router = Router();

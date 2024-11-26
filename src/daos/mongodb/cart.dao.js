@@ -6,21 +6,18 @@ export default class CartDaoMongoDB extends MongoDao {
     super(CartModel);
   }
 
-  // Método para crear un carrito vacío
   async create(data = { user: null, products: [] }) {
-    console.log("Datos para crear el carrito:", data); // Verificar datos de creación de carrito
+    console.log("Datos para crear el carrito:", data); 
     return await this.model.create(data);
   }
 
-  // Obtener el carrito de un usuario específico
   async getByUserId(userId) {
     return await this.model
       .findOne({ user: userId })
       .populate("products.product")
-      .populate("user"); // Añade esta línea
+      .populate("user");
   }
 
-  // Método para obtener un carrito por su ID y popular los productos
   async getById(id) {
     try {
       return await this.model.findById(id).populate("products.product");
@@ -29,7 +26,6 @@ export default class CartDaoMongoDB extends MongoDao {
     }
   }
 
-  // Método para agregar un producto al carrito
   async addProdToCart(cartId, prodId) {
     try {
       const existProdInCart = await this.existProdInCart(cartId, prodId);
@@ -55,7 +51,6 @@ export default class CartDaoMongoDB extends MongoDao {
     }
   }
 
-  // Método para verificar si un producto ya está en el carrito
   async existProdInCart(cartId, prodId) {
     try {
       return await this.model.findOne({
@@ -67,7 +62,6 @@ export default class CartDaoMongoDB extends MongoDao {
     }
   }
 
-  // Método para remover un producto específico del carrito
   async removeProdToCart(cartId, prodId) {
     try {
       return await this.model.findOneAndUpdate(
@@ -80,7 +74,6 @@ export default class CartDaoMongoDB extends MongoDao {
     }
   }
 
-  // Método para actualizar la cantidad de un producto en el carrito
   async updateProdQuantityToCart(cartId, prodId, quantity) {
     try {
       return await this.model.findOneAndUpdate(
@@ -93,7 +86,6 @@ export default class CartDaoMongoDB extends MongoDao {
     }
   }
 
-  // Método para vaciar el carrito
   async clearCart(cartId) {
     try {
       return await this.model.findByIdAndUpdate(

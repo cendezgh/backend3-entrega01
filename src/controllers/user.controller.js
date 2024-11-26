@@ -1,6 +1,6 @@
 import Controllers from "./class.controller.js";
 import UserService from '../services/user.services.js';
-import { createResponse } from "../utils.js";
+import { createResponse } from "../utils/utils.js";
 
 const userService = new UserService();
 
