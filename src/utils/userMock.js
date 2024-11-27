@@ -10,7 +10,5 @@ export const generateUser = () => {
     password: createHash('coder123'), 
     role: faker.helpers.arrayElement(['user', 'admin']),
     pets: [], 
-    isGithub: false,
-    isGoogle: false,
   };
 };

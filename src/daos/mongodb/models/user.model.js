@@ -27,16 +27,6 @@ const usersSchema = new Schema({
     type: String,
     default: "user",
   },
-  isGithub: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
-  isGoogle: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
   cart: {       
     type: Schema.Types.ObjectId,
     ref: "carts",

@@ -29,7 +29,7 @@ router.get('/mockingusers', (req, res) => {
 
 router.get('/mockingpets', (req, res) => {
   try {
-    const pets = Array.from({ length: 100 }, () => generatePets()); // <--  Usar generatePets aquí
+    const pets = Array.from({ length: 100 }, () => generatePets()); 
     res.json({ status: "success", payload: pets });
   } catch (error) {
     console.error("Error en /mockingpets:", error.message);
